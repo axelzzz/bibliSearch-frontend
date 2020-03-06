@@ -10,9 +10,24 @@ div.form {
     padding-top: 5em;
 }
 
+div.book_list {
+    display: block;
+    text-align: center;
+    padding-top: 4em;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 0.5em;
+}
+
 div.logo {
     display: block;
-    padding-top: 15em;
+    padding-top: 10em;
     text-align: center;    
 }
 

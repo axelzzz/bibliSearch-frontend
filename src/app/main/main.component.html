@@ -1,7 +1,16 @@
-<p>bibliS3arch</p>
+<p>bibliS3arch by XXL</p>
 
 <div class="form">
-  <input #form_book_title (keyup.enter)="getBooksSearched(form_book_title.value)">
+  <input #form_book_title (keyup.enter)="fetch()">
+</div>
+
+<div class="book_list">
+  <ul>
+    <li *ngFor="let book of books">
+      <a href="http://www.gutenberg.org/files/21/21-0.txt">{{ book.title }}, by {{ book.author }}</a>
+    </li>
+  </ul>
+
 </div>
 
 <div class="logo">
