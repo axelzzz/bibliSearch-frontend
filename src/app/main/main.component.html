@@ -1,13 +1,25 @@
 <p>bibliS3arch by XXL</p>
 
+<!--
 <div class="form">
-  <input #form_book_title (keyup.enter)="fetch()">
+  <input #form_book_title (keyup.enter)="searchBook()">
 </div>
+-->
+
+
+<!-- Search form -->
+<form class="form form-inline md-form form-sm">
+  <input class="form-control form-control-sm mr-3 w-75" 
+    (keyup.enter)="searchBook" 
+    type="text" placeholder="Search book" aria-label="Search"
+    mdbInput>
+  <mdb-icon  fas icon="search" aria-hidden="true" class="clickable-icon"></mdb-icon>
+</form>
 
 <div class="book_list">
   <ul>
     <li *ngFor="let book of books">
-      <a href="http://www.gutenberg.org/files/21/21-0.txt">{{ book.title }}, by {{ book.author }}</a>
+      <a [ngStyle]="{'font-style':'italic'}" href="../../../assets/database/{{ book.nameFile }}">{{ book.title }}</a>, by {{ book.author }}
     </li>
   </ul>
 

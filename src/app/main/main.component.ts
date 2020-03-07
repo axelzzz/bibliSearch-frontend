@@ -3,7 +3,7 @@ import { Book } from '../models/Book';
 import { SearchEngineService } from '../services/search-engine.service';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
-import { Test } from '../models/Test';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-main',
@@ -12,6 +12,7 @@ import { Test } from '../models/Test';
 })
 export class MainComponent implements OnInit {
 
+  
   books: Book[];
   nbLivres = 5;
 
@@ -55,6 +56,12 @@ export class MainComponent implements OnInit {
     })
   }
  
+  searchBook() {
+    console.log('ok');
+  }
 
+  handleClick() {
+    console.log('clicked');
+  }
 
 }
