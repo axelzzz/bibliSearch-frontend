@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { configUrl, httpOptions, httpOptionsCORS } from "../../assets/config";
+import { configUrl } from "../../assets/config";
 import { Observable } from 'rxjs';
 
 
@@ -21,16 +21,14 @@ export class SearchEngineService {
     console.log('you searched', pattern);
   }
 
-  getBooksSearchedV2() {
-    //return this.http.get<>(this.configUrl);
-  }
+  
 
   getAPI(): Observable<any>{
     return this.http.get<any>(configUrl.proxyUrl + configUrl.searchUrl);
   }
 
-  fetchBook(url: string):Observable<any> {
-    console.log('iciiii')
-    return this.http.get(configUrl.proxyUrl + url);
+  filter(pattern: string) {
+    console.log('in service');
+    return this.http.get<any>(configUrl.filterUrl+pattern);
   }
 }

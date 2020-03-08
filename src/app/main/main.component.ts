@@ -47,19 +47,14 @@ export class MainComponent implements OnInit {
     this.searchEngineService.getBooksSearched(pattern);
   }
 
-  fetch() {
-    this.fetchBook('http://www.gutenberg.org/files/21/21-0.txt');
-  }
 
-  fetchBook(url: string) {
-    this.searchEngineService.fetchBook(url)
-    .subscribe(response => {
-      console.log('ici ', response.text);
-    })
-  }
  
   filter(pattern: string) {
     console.log('Pattern searched :', pattern);
+    this.searchEngineService.filter(pattern)
+    .subscribe(books => {
+      this.books = books;
+    });
   }
 
 
