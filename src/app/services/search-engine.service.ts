@@ -17,15 +17,6 @@ export class SearchEngineService {
     return this.http.get(configUrl.searchUrl);
   }
 
-  getBooksSearched(pattern: string) {
-    console.log('you searched', pattern);
-  }
-
-  
-
-  getAPI(): Observable<any>{
-    return this.http.get<any>(configUrl.proxyUrl + configUrl.searchUrl);
-  }
 
   filter(pattern: string) {
     console.log('in service');

@@ -21,7 +21,7 @@ export class MainComponent implements OnInit {
               public ngxSmartModalService: NgxSmartModalService) { }
 
   ngOnInit(): void {
-    this.getBooks();
+    //this.getBooks();
     
   }
 
@@ -32,21 +32,6 @@ export class MainComponent implements OnInit {
       this.books = books;
     });
   }
-
-  getAPI() {
-    this.searchEngineService.getAPI()
-    .subscribe(response => {
-      this.nbLivres = response;
-      console.log('ici ',this.nbLivres);
-    }, (error) => {
-      console.log('error',error)
-    });
-  }
-
-  getBooksSearched(pattern: string) {
-    this.searchEngineService.getBooksSearched(pattern);
-  }
-
 
  
   filter(pattern: string) {
