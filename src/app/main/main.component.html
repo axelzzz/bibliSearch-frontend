@@ -1,25 +1,44 @@
 <p>bibliS3arch by XXL</p>
 
+
 <!--
-<div class="form">
-  <input #form_book_title (keyup.enter)="searchBook()">
-</div>
+<a href="../../../assets/database/{{ book.nameFile }}"></a>
 -->
 
-
 <!-- Search form -->
-<form class="form form-inline md-form form-sm">
-  <input class="form-control form-control-sm mr-3 w-75" 
-    (keyup.enter)="searchBook" 
+
+<div class="form form-inline md-form form-sm"  >
+  <input #searchbar class="form-control form-control-sm mr-3 w-75" 
+    (keyup.enter)="filter(searchbar.value)"
     type="text" placeholder="Search book" aria-label="Search"
     mdbInput>
-  <mdb-icon  fas icon="search" aria-hidden="true" class="clickable-icon"></mdb-icon>
-</form>
+  <mdb-icon  fas icon="search" aria-hidden="true" 
+             class="clickable-icon" (click)="filter(searchbar.value)">
+  </mdb-icon>
+  
+</div>
 
 <div class="book_list">
   <ul>
     <li *ngFor="let book of books">
-      <a [ngStyle]="{'font-style':'italic'}" href="../../../assets/database/{{ book.nameFile }}">{{ book.title }}</a>, by {{ book.author }}
+
+      <!--
+      <ngx-smart-modal #myModal identifier="myModal">
+        <h1>Title</h1>
+       
+        <p>"../../../assets/database/{{ book.nameFile }}"</p>
+
+        <button (click)="myModal.close()">Close</button>
+      </ngx-smart-modal>
+       (click)="ngxSmartModalService.getModal('myModal').open()"
+      -->
+
+      <a [ngStyle]="{'font-style':'italic', 'color':'blue'}"
+      href="../../../assets/database/{{ book.nameFile }}" 
+     
+        >
+        {{ book.title }}
+    </a>, by {{ book.author }}
     </li>
   </ul>
 

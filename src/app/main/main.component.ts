@@ -4,6 +4,7 @@ import { SearchEngineService } from '../services/search-engine.service';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { NgStyle } from '@angular/common';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-main',
@@ -16,7 +17,8 @@ export class MainComponent implements OnInit {
   books: Book[];
   nbLivres = 5;
 
-  constructor(private searchEngineService: SearchEngineService) { }
+  constructor(private searchEngineService: SearchEngineService,
+              public ngxSmartModalService: NgxSmartModalService) { }
 
   ngOnInit(): void {
     this.getBooks();
@@ -56,12 +58,9 @@ export class MainComponent implements OnInit {
     })
   }
  
-  searchBook() {
-    console.log('ok');
+  filter(pattern: string) {
+    console.log('Pattern searched :', pattern);
   }
 
-  handleClick() {
-    console.log('clicked');
-  }
 
 }
