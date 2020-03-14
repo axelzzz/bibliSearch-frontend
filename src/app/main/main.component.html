@@ -20,11 +20,15 @@
   <ul>
     <li *ngFor="let book of books">
 
+
       <a [ngStyle]="{'font-style':'italic', 'color':'blue'}"
       (click)="fetchBook(book)"
-      routerLink='book-content' routerLinkActive="active"    >
+     routerLink="/book-content"
+  
+        >
         {{ book.title }}
-      </a>, by {{ book.author }}
+    </a>, by {{ book.author }}
+    
     </li>
   </ul>
  
