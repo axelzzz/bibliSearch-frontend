@@ -8,11 +8,32 @@ import { MainComponent } from './main/main.component';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { Routes, RouterModule } from '@angular/router';
+import { BookComponent } from './book/book.component';
+
+const appRoutes: Routes = [
+  { 
+    path: '',
+    redirectTo: '/search',
+    pathMatch: 'full'
+  },
+  {
+    path: 'search',
+    component: MainComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'book-content',
+    component: BookComponent,
+    pathMatch: 'full'
+  }
+]
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +41,7 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     NgxSmartModalModule.forRoot(),
+    RouterModule.forRoot(appRoutes)
     
   ],
   providers: [],

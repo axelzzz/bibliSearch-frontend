@@ -1,11 +1,6 @@
 <p>bibliS3arch by XXL</p>
 
 
-<!--
-<a href="../../../assets/database/{{ book.nameFile }}"></a>
-href="../../../../database500/{{ book.nameFile }}" 
--->
-
 <!-- Search form -->
 
 <div class="form form-inline md-form form-sm"  >
@@ -23,25 +18,15 @@ href="../../../../database500/{{ book.nameFile }}"
   <ul>
     <li *ngFor="let book of books">
 
-      <!--
-      <ngx-smart-modal #myModal identifier="myModal">
-        <h1>Title</h1>
-       
-        <p>"../../../assets/database/{{ book.nameFile }}"</p>
-
-        <button (click)="myModal.close()">Close</button>
-      </ngx-smart-modal>
-       (click)="ngxSmartModalService.getModal('myModal').open()"
-      -->
 
       <a [ngStyle]="{'font-style':'italic', 'color':'blue'}"
       (click)="fetchBook(book)"
-     
-     
+     routerLink="/book-content"
+  
         >
         {{ book.title }}
     </a>, by {{ book.author }}
-    <div>{{book.content}}</div>
+    
     </li>
   </ul>
 
