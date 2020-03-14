@@ -7,19 +7,21 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { RouterModule } from '@angular/router';
+import { BookComponent } from './book/book.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    NgxSmartModalModule.forRoot(),
+    
     
   ],
   providers: [],
