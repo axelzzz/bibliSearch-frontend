@@ -35,11 +35,13 @@ href="../../../../database500/{{ book.nameFile }}"
       -->
 
       <a [ngStyle]="{'font-style':'italic', 'color':'blue'}"
-      href="../../../assets/database500/{{ book.nameFile }}" 
+      (click)="fetchBook(book)"
+     
      
         >
         {{ book.title }}
     </a>, by {{ book.author }}
+    <div>{{book.content}}</div>
     </li>
   </ul>
 

@@ -14,23 +14,34 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 export class MainComponent implements OnInit {
 
   
-  books: Book[];
+  books = [];
   nbLivres = 5;
 
   constructor(private searchEngineService: SearchEngineService,
               public ngxSmartModalService: NgxSmartModalService) { }
 
   ngOnInit(): void {
-    //this.getBooks();
+    this.getBooks();
     
   }
 
   
+  
+
   getBooks() {
-    this.searchEngineService.getBooks()
+    this.searchEngineService.getBooksMetadata()
     .subscribe(books => {
       this.books = books;
     });
+  }
+
+
+  fetchBook(book:Book) {
+    
+    this.searchEngineService.fetchBook(book.nameFile)
+    .subscribe(content => {
+      book.content = content;
+    });     
   }
 
  
@@ -42,5 +53,6 @@ export class MainComponent implements OnInit {
     });
   }
 
+  
 
 }
