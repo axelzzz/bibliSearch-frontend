@@ -21,15 +21,18 @@ export class SearchEngineService {
   fetchBook(nameFile:string) : Observable<string> {
     
     let url = configUrls.proxyUrl + configUrls.gutenbergUrl2;
-
-    if(nameFile.indexOf('.txt.utf-8') >= 0){
-      /* regler probleme fetch avec -8.txt ou que .txt */
-      url = url + nameFile.replace(".txt.utf-8","") + "/" + nameFile.replace(".txt.utf-8",".txt");
-    }
     
-    else{
-       url = url + nameFile.replace("-0.txt","") + "/" + nameFile;
-    }      
+    if(nameFile.indexOf('.txt.utf-8') >= 0){      
+      url = url + nameFile.replace(".txt.utf-8","") + "/" + nameFile.replace(".txt.utf-8","-8.txt");
+    }
+    else {
+      if(nameFile.indexOf('-8.txt') >= 0){
+        url = url + nameFile.replace("-8.txt","") + "/" + nameFile;
+      }
+      else{
+        url = url + nameFile.replace("-0.txt","") + "/" + nameFile;
+     } 
+    }         
     
     return this.http.get( url , {responseType: 'text'});//"/pg" + nameFile);
   }

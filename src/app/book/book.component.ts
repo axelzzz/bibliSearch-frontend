@@ -18,10 +18,6 @@ export class BookComponent implements OnInit {
     this.dataHandlerService.currentBookMessage
     .subscribe(bookMessage => {
       this.book_content = bookMessage;
-    })
-    
+    }); 
   }
-
-
-
 }

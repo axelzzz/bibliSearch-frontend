@@ -18,10 +18,8 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBooks();
-    
   }
 
-  
 
   getBooks() {
     this.searchEngineService.getBooksMetadata()
@@ -31,12 +29,14 @@ export class MainComponent implements OnInit {
   }
 
 
-  fetchBook(book:Book) {
-    
+  fetchBook(book:Book) {    
     this.searchEngineService.fetchBook(book.nameFile)
-    .subscribe(content => {
+    .subscribe(content => {      
       book.content = content;
-      this.dataHandlerService.changeBook(book.content);
+      this.dataHandlerService.changeBook(book.content);      
+    },
+    error => {
+      console.error("Book not found ", error);
     });     
   }
 
@@ -48,7 +48,4 @@ export class MainComponent implements OnInit {
       this.books = books;
     });
   }
-
-  
-
 }
