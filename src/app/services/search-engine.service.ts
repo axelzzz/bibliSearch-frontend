@@ -18,7 +18,7 @@ export class SearchEngineService {
     return this.http.get<Book[]>(configUrls.searchUrl);
   }
 
-  fetchBook(nameFile:string) : Observable<any> {
+  fetchBook(nameFile:string) : Observable<string> {
     
     let url = configUrls.proxyUrl + configUrls.gutenbergUrl2;
 

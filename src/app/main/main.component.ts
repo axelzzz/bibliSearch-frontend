@@ -40,7 +40,6 @@ export class MainComponent implements OnInit {
     this.searchEngineService.fetchBook(book.nameFile)
     .subscribe(content => {
       book.content = content;
-      console.log('i ',book.content);
       this.dataHandlerService.changeBook(book.content);
     });     
   }

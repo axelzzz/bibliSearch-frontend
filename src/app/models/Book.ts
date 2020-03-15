@@ -1,6 +1,6 @@
 export interface Book {
 
-    content: any;
+    content: string;
     nameFile: string;
     title: string;
     author: string;
