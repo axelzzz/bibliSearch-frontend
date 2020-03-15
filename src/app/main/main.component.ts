@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../models/Book';
 import { SearchEngineService } from '../services/search-engine.service';
 import { DataHandlerService } from '../services/data-handler.service';
-import { BookComponent } from '../book/book.component';
 
 @Component({
   selector: 'app-main',
@@ -11,20 +10,17 @@ import { BookComponent } from '../book/book.component';
 })
 export class MainComponent implements OnInit {
 
-  
   books = [];
   nbLivres = 5;
 
   constructor(private searchEngineService: SearchEngineService,
-              private dataHandlerService: DataHandlerService,
-              private bookComponent: BookComponent) { }
+              private dataHandlerService: DataHandlerService) { }
 
   ngOnInit(): void {
     this.getBooks();
     
   }
 
-  
   
 
   getBooks() {
