@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../models/Book';
 import { SearchEngineService } from '../services/search-engine.service';
-import { Observable } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
-import { NgStyle } from '@angular/common';
+import { DataHandlerService } from '../services/data-handler.service';
+import { BookComponent } from '../book/book.component';
 
 @Component({
   selector: 'app-main',
@@ -16,7 +15,9 @@ export class MainComponent implements OnInit {
   books = [];
   nbLivres = 5;
 
-  constructor(private searchEngineService: SearchEngineService) { }
+  constructor(private searchEngineService: SearchEngineService,
+              private dataHandlerService: DataHandlerService,
+              private bookComponent: BookComponent) { }
 
   ngOnInit(): void {
     this.getBooks();
@@ -39,6 +40,8 @@ export class MainComponent implements OnInit {
     this.searchEngineService.fetchBook(book.nameFile)
     .subscribe(content => {
       book.content = content;
+      console.log('i ',book.content);
+      this.dataHandlerService.changeBook(book.content);
     });     
   }
 

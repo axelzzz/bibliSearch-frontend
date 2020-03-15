@@ -1,0 +1,17 @@
+div.logo {
+    display: block;
+    padding-top: 2em;
+    text-align: center;   
+}
+
+.a1 {
+    padding-right: 5em;
+}
+
+img {
+    height: 5em;
+}
+
+p {
+    padding-top: 5em;
+}

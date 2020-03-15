@@ -42,7 +42,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
     
   ],
-  providers: [],
+  providers: [BookComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
