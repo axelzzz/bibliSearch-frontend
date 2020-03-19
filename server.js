@@ -7,8 +7,8 @@ if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
 }
 app.listen(process.env.PORT || 8080);
-app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+app.get('/*', (request, response) => {
+	response.sendFile(path.join(__dirname, '/dist/bibli-search-frontend/index.html'));
 });
 /*
 app.get('/*', function(req, res) {
