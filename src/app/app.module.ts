@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { Routes, RouterModule } from '@angular/router';
 import { BookComponent } from './book/book.component';
 
@@ -38,7 +37,6 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    NgxSmartModalModule.forRoot(),
     RouterModule.forRoot(appRoutes)
     
   ],
