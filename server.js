@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-app.use(express.static('./dist/package.json'));
+app.use(express.static(__dirname + '/dist'));
 
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname+'/dist/bibli-search-frontend/index.html'));
+app.get('/*', (req, res) => {
+	res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
 /*
 app.get('/*', function(req, res) {
