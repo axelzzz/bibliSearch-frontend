@@ -72,18 +72,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bibliSearch-frontend:build"
+            "browserTarget": "bibli-search-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bibliSearch-frontend:build:production"
+              "browserTarget": "bibli-search-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bibliSearch-frontend:build"
+            "browserTarget": "bibli-search-frontend:build"
           }
         },
         "test": {
@@ -124,11 +124,11 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "bibliSearch-frontend:serve:production"
+              "devServerTarget": "bibli-search-frontend:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "bibliSearch-frontend"
+  "defaultProject": "bibli-search-frontend"
 }
