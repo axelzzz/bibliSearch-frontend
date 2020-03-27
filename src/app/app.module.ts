@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -8,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { Routes, RouterModule } from '@angular/router';
 import { BookComponent } from './book/book.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { 
@@ -37,8 +39,9 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
-    
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MatCheckboxModule
   ],
   providers: [BookComponent],
   bootstrap: [AppComponent]

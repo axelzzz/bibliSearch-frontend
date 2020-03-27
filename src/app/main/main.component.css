@@ -4,6 +4,25 @@ div {
     padding-top: 10em;
 }
 
+span.checkboxes {
+    display: table;
+    text-align: center;
+    margin: auto;
+    padding-top: 6px;
+    /*
+    border: 0.1em solid;
+    border-color: red;*/
+      
+}
+
+mat-checkbox {
+    padding: 1em;
+    color: rgb(20, 94, 144);    
+}
+
+::ng-deep .mat-checkbox-frame {
+    border-color: rgb(130, 156, 173);
+}
 
 p {
     display: block;
