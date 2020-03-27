@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../models/Book';
+
 import { DataHandlerService } from '../services/data-handler.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class BookComponent implements OnInit {
 
   book_content: string;
 
-  constructor(private dataHandlerService: DataHandlerService) { }
+  constructor(private dataHandlerService: DataHandlerService,) { }
 
   ngOnInit() {
     

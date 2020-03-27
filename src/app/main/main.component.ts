@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Book } from '../models/Book';
 import { SearchEngineService } from '../services/search-engine.service';
 import { DataHandlerService } from '../services/data-handler.service';
@@ -11,10 +12,17 @@ import { DataHandlerService } from '../services/data-handler.service';
 export class MainComponent implements OnInit {
 
   books = [];
-  nbLivres = 5;
+
+  isSearchByTitle = false;
+  isSearchByAuthor = false;
+  isSearchByReleaseDate = false;
+  isSearchByPostingDate = false;
+  isSearchByLanguage = false;
+  isSearchInCurrentBooks = false;
 
   constructor(private searchEngineService: SearchEngineService,
               private dataHandlerService: DataHandlerService) { }
+
 
   ngOnInit(): void {
     this.getBooks();
@@ -29,7 +37,37 @@ export class MainComponent implements OnInit {
   }
 
 
-  fetchBook(book:Book) {    
+  filter(pattern: string) {
+    
+    if(! (this.isSearchByTitle 
+       || this.isSearchByAuthor
+       || this.isSearchByReleaseDate
+       || this.isSearchByPostingDate
+       || this.isSearchByLanguage) ) {
+
+        this.searchEngineService.filter(pattern)
+          .subscribe(books => {
+            this.books = books;
+          });
+    }
+
+    else {
+      
+      this.searchEngineService
+      .filterCriterias(pattern,
+                    this.isSearchByTitle,
+                    this.isSearchByAuthor,
+                    this.isSearchByReleaseDate,
+                    this.isSearchByPostingDate,
+                    this.isSearchByLanguage)
+                    .subscribe(books => {
+                      this.books = books;
+                    });
+    }     
+  }
+
+
+  fetchBook(book:Book) {           
     this.searchEngineService.fetchBook(book.nameFile)
     .subscribe(content => {      
       book.content = content;
@@ -40,6 +78,7 @@ export class MainComponent implements OnInit {
       this.fetchBookAttemptWithModifiedName(book);
     });     
   }
+  
 
   fetchBookAttemptWithModifiedName(book:Book) { 
     book.nameFile = book.nameFile.replace(".txt.utf-8",".txt")   
@@ -51,14 +90,5 @@ export class MainComponent implements OnInit {
     error => {
       console.error("Book modified not found ", error);
     });     
-  }
-
- 
-  filter(pattern: string) {
-    console.log('Pattern searched :', pattern);
-    this.searchEngineService.filter(pattern)
-    .subscribe(books => {
-      this.books = books;
-    });
   }
 }

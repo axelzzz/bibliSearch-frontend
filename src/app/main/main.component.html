@@ -12,19 +12,18 @@
     mdbInput>
   <mdb-icon  fas icon="search" aria-hidden="true" 
              class="clickable-icon" (click)="filter(searchbar.value)">
-  </mdb-icon>
-
-  
-  
+  </mdb-icon>  
 </div>
 
 <span class="checkboxes">
-  <mat-checkbox>by title</mat-checkbox>
-  <mat-checkbox>by author</mat-checkbox>
-  <mat-checkbox>by release date</mat-checkbox>
-  <mat-checkbox>by posting date</mat-checkbox>
-  <mat-checkbox>by language</mat-checkbox>
-  <mat-checkbox>in current books</mat-checkbox>
+  <mat-checkbox [(ngModel)]="isSearchByTitle">by title</mat-checkbox>
+  <mat-checkbox [(ngModel)]="isSearchByAuthor">by author</mat-checkbox>
+  <mat-checkbox [(ngModel)]="isSearchByReleaseDate">by release date</mat-checkbox>
+  <mat-checkbox [(ngModel)]="isSearchByPostingDate">by posting date</mat-checkbox>
+  <mat-checkbox [(ngModel)]="isSearchByLanguage">by language</mat-checkbox>
+  <!--
+  <mat-checkbox [(ngModel)]="isSearchInCurrentBooks">in current books</mat-checkbox>
+  -->
 </span>
 
 <div class="book_list">

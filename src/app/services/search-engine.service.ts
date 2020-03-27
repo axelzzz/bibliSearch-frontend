@@ -18,6 +18,25 @@ export class SearchEngineService {
     return this.http.get<Book[]>(configUrls.searchUrlLocal);
   }
 
+
+  filter(pattern: string) {    
+    return this.filterCriterias(pattern, false, false, false, false, false);
+  }
+
+  filterCriterias(pattern: string, 
+                  isSearchByTitle: boolean,
+                  isSearchByAuthor: boolean,
+                  isSearchByReleaseDate: boolean,
+                  isSearchByPostingDate: boolean,
+                  isSearchByLanguage: boolean) {
+
+    return this.http.get<any>(configUrls.filterUrlLocal+pattern+"&isSearchByTitle="+isSearchByTitle
+                                                               +"&isSearchByAuthor="+isSearchByAuthor
+                                                               +"&isSearchByReleaseDate="+isSearchByReleaseDate
+                                                               +"&isSearchByPostingDate="+isSearchByPostingDate
+                                                               +"&isSearchByLanguage="+isSearchByLanguage);   
+  }
+
   fetchBook(nameFile:string) : Observable<string> {
     
     let url = configUrls.proxyUrl + configUrls.gutenbergUrl2;
@@ -40,11 +59,5 @@ export class SearchEngineService {
     }         
     
     return this.http.get( url , {responseType: 'text'});//"/pg" + nameFile);
-  }
-
-
-  filter(pattern: string) {
-    console.log('in service');
-    return this.http.get<any>(configUrls.filterUrlLocal+pattern);
   }
 }
