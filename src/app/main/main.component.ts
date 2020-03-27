@@ -36,7 +36,20 @@ export class MainComponent implements OnInit {
       this.dataHandlerService.changeBook(book.content);      
     },
     error => {
-      console.error("Book not found ", error);
+      console.error("Book not found, trying with other name file ", error);
+      this.fetchBookAttemptWithModifiedName(book);
+    });     
+  }
+
+  fetchBookAttemptWithModifiedName(book:Book) { 
+    book.nameFile = book.nameFile.replace(".txt.utf-8",".txt")   
+    this.searchEngineService.fetchBook(book.nameFile)
+    .subscribe(content => {      
+      book.content = content;
+      this.dataHandlerService.changeBook(book.content);      
+    },
+    error => {
+      console.error("Book modified not found ", error);
     });     
   }
 
