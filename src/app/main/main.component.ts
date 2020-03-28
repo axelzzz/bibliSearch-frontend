@@ -13,6 +13,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class MainComponent implements OnInit {
 
   books = [];
+  booksSuggestion = [];
+
+  showSuggestion = false;
+  hasSearched = false;
 
   isSearchByTitle = false;
   isSearchByAuthor = false;
@@ -28,6 +32,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBooks();
+    
   }
 
 
@@ -42,6 +47,8 @@ export class MainComponent implements OnInit {
 
 
   filter(pattern: string) {
+    
+    this.hasSearched = true;
     this.spinner.show();
     if(! (this.isSearchByTitle 
        || this.isSearchByAuthor
@@ -73,21 +80,30 @@ export class MainComponent implements OnInit {
   }
 
 
-  fetchBook(book:Book) {           
+  fetchBook(book:Book) { 
+    this.showSuggestion = true;
     this.searchEngineService.fetchBook(book.nameFile)
     .subscribe(content => {            
       book.content = content;
       this.dataHandlerService.changeBook(book.content);      
     },
     error => {
-      console.error("Book not found, trying with other name file ", error);
+      console.error("Book not found, trying with other name file ");
       this.fetchBookAttemptWithModifiedName(book);
-    });     
+    });
+    
+    this.searchEngineService.getSuggestions(book.nameFile)
+    .subscribe(suggestions => {
+      this.booksSuggestion = suggestions;
+    });
+    
   }
   
 
   fetchBookAttemptWithModifiedName(book:Book) { 
+   
     book.nameFile = book.nameFile.replace(".txt.utf-8",".txt")   
+    
     this.searchEngineService.fetchBook(book.nameFile)
     .subscribe(content => {      
       book.content = content;
@@ -95,6 +111,26 @@ export class MainComponent implements OnInit {
     },
     error => {
       console.error("Book modified not found ", error);
-    });     
+    });  
+    
+    this.searchEngineService.getSuggestions(book.nameFile)
+    .subscribe(suggestions => {
+      this.booksSuggestion = suggestions;      
+    });
+  }
+
+  getWidth() {
+    if(this.booksSuggestion.length > 0){
+      //this.showSuggestion = false;
+      //this.hasSearched = false;  
+      return '50%';
+    }
+  }
+
+  getFloat() {    
+    if(this.booksSuggestion.length > 0){
+      //this.showSuggestion = false;   
+      return 'left';
+    }
   }
 }

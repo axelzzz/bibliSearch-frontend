@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, RouteReuseStrategy } from '@angular/router';
 import { BookComponent } from './book/book.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CustomReuseStrategy } from './strategy/CustomReuseStrategy';
 
 const appRoutes: Routes = [
   { 
@@ -47,7 +48,9 @@ const appRoutes: Routes = [
     FormsModule,
     NgxSpinnerModule
   ],
-  providers: [BookComponent],
+  providers: [BookComponent, MainComponent,
+    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy}          
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

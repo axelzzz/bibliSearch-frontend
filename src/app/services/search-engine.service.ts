@@ -15,7 +15,7 @@ export class SearchEngineService {
   constructor(private http: HttpClient) { }
 
   getBooksMetadata() : Observable<Book[]> {
-    return this.http.get<Book[]>(configUrls.searchUrl);
+    return this.http.get<Book[]>(configUrls.searchUrlLocal);
   }
 
 
@@ -30,7 +30,7 @@ export class SearchEngineService {
                   isSearchByPostingDate: boolean,
                   isSearchByLanguage: boolean) {
 
-    return this.http.get<any>(configUrls.filterUrl+pattern+"&isSearchByTitle="+isSearchByTitle
+    return this.http.get<any>(configUrls.filterUrlLocal+pattern+"&isSearchByTitle="+isSearchByTitle
                                                                +"&isSearchByAuthor="+isSearchByAuthor
                                                                +"&isSearchByReleaseDate="+isSearchByReleaseDate
                                                                +"&isSearchByPostingDate="+isSearchByPostingDate
@@ -59,5 +59,10 @@ export class SearchEngineService {
     }         
     
     return this.http.get( url , {responseType: 'text'});//"/pg" + nameFile);
+  }
+
+
+  getSuggestions(nameFile:string) {
+    return this.http.get<any>(configUrls.searchUrlLocal+"suggestions?nameFile="+nameFile);
   }
 }

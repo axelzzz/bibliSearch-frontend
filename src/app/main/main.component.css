@@ -42,6 +42,7 @@ div.book_list {
     padding-top: 4em;
 }
 
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -53,7 +54,7 @@ li {
 
 a.logo {
     display: block;
-    padding-top: 10em;
+    margin-top: 10em;
     text-align: center;    
 }
 

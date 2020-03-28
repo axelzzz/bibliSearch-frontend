@@ -30,21 +30,46 @@
 </span>
 
 <div class="book_list">
-  <ul>
+  <ul [style.width]="getWidth()"
+      [style.float]="getFloat()"
+  >
+    <span>Results :</span>
+
     <li *ngFor="let book of books">
 
       <a [ngStyle]="{'font-style':'italic', 'color':'rgb(38, 99, 170)'}"
-      (click)="fetchBook(book)"
-     routerLink="/book-content"  
+        (click)="fetchBook(book)"
+        routerLink="/book-content"  
         >
         {{ book.title }}
     </a>, by {{ book.author }}
     
     </li>
   </ul>
+
+  <ul [style.width]="getWidth()"
+      [style.float]="getFloat()"
+  >
+    <span *ngIf="showSuggestion">Suggestions :</span>
+
+    <li *ngFor="let book of booksSuggestion">
+
+      <a [ngStyle]="{'font-style':'italic', 'color':'rgb(38, 99, 170)'}"
+          (click)="fetchBook(book)"
+          routerLink="/book-content"  
+          >
+          {{ book.title }}
+      </a>, by {{ book.author }}
+
+    </li> 
+  </ul>
  
+ 
+
 </div>
 
+<!--
 <a class="logo" href="http://www.sorbonne-universite.fr/">
-    <img src="../../assets/images/background.png" alt="sorbonne-logo" />
+  <img src="../../assets/images/background.png" alt="sorbonne-logo" />
 </a>
+-->
