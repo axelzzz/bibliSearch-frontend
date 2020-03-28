@@ -38,7 +38,7 @@
     <li *ngFor="let book of books">
 
       <a [ngStyle]="{'font-style':'italic', 'color':'rgb(38, 99, 170)'}"
-        (click)="fetchBook(book)"
+        (click)="loadBook(book)"
         routerLink="/book-content"  
         >
         {{ book.title }}
@@ -55,7 +55,7 @@
     <li *ngFor="let book of booksSuggestion">
 
       <a [ngStyle]="{'font-style':'italic', 'color':'rgb(38, 99, 170)'}"
-          (click)="fetchBook(book)"
+          (click)="loadBook(book)"
           routerLink="/book-content"  
           >
           {{ book.title }}

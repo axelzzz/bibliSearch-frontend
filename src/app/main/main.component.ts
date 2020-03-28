@@ -79,7 +79,7 @@ export class MainComponent implements OnInit {
     }     
   }
 
-
+  /*
   fetchBook(book:Book) { 
     this.showSuggestion = true;
     this.searchEngineService.fetchBook(book.nameFile)
@@ -98,8 +98,19 @@ export class MainComponent implements OnInit {
     });
     
   }
-  
+  */
 
+  loadBook(book:Book) {
+    this.showSuggestion = true;
+    this.dataHandlerService.changeBook(book.nameFile);
+
+    this.searchEngineService.getSuggestions(book.nameFile)
+    .subscribe(suggestions => {
+      this.booksSuggestion = suggestions;
+    });
+  }
+  
+/*
   fetchBookAttemptWithModifiedName(book:Book) { 
    
     book.nameFile = book.nameFile.replace(".txt.utf-8",".txt")   
@@ -118,7 +129,7 @@ export class MainComponent implements OnInit {
       this.booksSuggestion = suggestions;      
     });
   }
-
+*/
   getWidth() {
     if(this.booksSuggestion.length > 0){
       //this.showSuggestion = false;
