@@ -60,6 +60,10 @@ export class MainComponent implements OnInit {
           .subscribe(books => {
             this.books = books;
             this.spinner.hide();
+          },
+          error => {
+            console.error("error at filter");
+            this.spinner.hide();
           });
     }
 
@@ -74,6 +78,10 @@ export class MainComponent implements OnInit {
                     this.isSearchByLanguage)
                     .subscribe(books => {
                       this.books = books;
+                      this.spinner.hide();
+                    },
+                    error => {
+                      console.error("error at filter");
                       this.spinner.hide();
                     });
     }     
