@@ -2,7 +2,10 @@
   <a routerLink="/search">bibliS3arch by XXL</a>
 </div> 
 
-
+<ngx-spinner
+  color = "rgb(38, 99, 170)"
+  type = "ball-fussion">Loading...
+</ngx-spinner>
 <!-- Search form -->
 
 <div class="form form-inline md-form form-sm"  >
@@ -30,7 +33,7 @@
   <ul>
     <li *ngFor="let book of books">
 
-      <a [ngStyle]="{'font-style':'italic', 'color':'blue'}"
+      <a [ngStyle]="{'font-style':'italic', 'color':'rgb(38, 99, 170)'}"
       (click)="fetchBook(book)"
      routerLink="/book-content"  
         >

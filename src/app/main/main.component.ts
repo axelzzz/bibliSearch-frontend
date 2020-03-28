@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../models/Book';
 import { SearchEngineService } from '../services/search-engine.service';
 import { DataHandlerService } from '../services/data-handler.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-main',
@@ -21,7 +22,8 @@ export class MainComponent implements OnInit {
   isSearchInCurrentBooks = false;
 
   constructor(private searchEngineService: SearchEngineService,
-              private dataHandlerService: DataHandlerService) { }
+              private dataHandlerService: DataHandlerService,
+              private spinner: NgxSpinnerService) { }
 
 
   ngOnInit(): void {
@@ -30,15 +32,17 @@ export class MainComponent implements OnInit {
 
 
   getBooks() {
+    this.spinner.show();
     this.searchEngineService.getBooksMetadata()
     .subscribe(books => {
       this.books = books;
+      this.spinner.hide();
     });
   }
 
 
   filter(pattern: string) {
-    
+    this.spinner.show();
     if(! (this.isSearchByTitle 
        || this.isSearchByAuthor
        || this.isSearchByReleaseDate
@@ -48,6 +52,7 @@ export class MainComponent implements OnInit {
         this.searchEngineService.filter(pattern)
           .subscribe(books => {
             this.books = books;
+            this.spinner.hide();
           });
     }
 
@@ -62,6 +67,7 @@ export class MainComponent implements OnInit {
                     this.isSearchByLanguage)
                     .subscribe(books => {
                       this.books = books;
+                      this.spinner.hide();
                     });
     }     
   }
@@ -69,7 +75,7 @@ export class MainComponent implements OnInit {
 
   fetchBook(book:Book) {           
     this.searchEngineService.fetchBook(book.nameFile)
-    .subscribe(content => {      
+    .subscribe(content => {            
       book.content = content;
       this.dataHandlerService.changeBook(book.content);      
     },

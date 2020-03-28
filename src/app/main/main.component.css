@@ -17,7 +17,7 @@ span.checkboxes {
 
 mat-checkbox {
     padding: 1em;
-    color: rgb(20, 94, 144);    
+    color:rgb(38, 99, 170);    
 }
 
 ::ng-deep .mat-checkbox-frame {
