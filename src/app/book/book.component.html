@@ -13,5 +13,7 @@
       <img src="../../assets/images/pg-logo-002.png" alt="sorbonne-logo" />
     </a>
 </div>
-<p>{{ book_content }}</p>
-
+<div [innerHTML]= "bookMessage[0] | patternPipe : bookMessage[1] "></div>
+<!--
+<div>{{ bookMessage[0] | patternPipe }}</div>
+-->

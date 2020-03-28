@@ -13,6 +13,7 @@ import { BookComponent } from './book/book.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CustomReuseStrategy } from './strategy/CustomReuseStrategy';
+import { PatternPipe } from './book/pattern.pipe';
 
 const appRoutes: Routes = [
   { 
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     MainComponent,
-    BookComponent
+    BookComponent,
+    PatternPipe
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ import { MainComponent } from '../main/main.component';
 })
 export class BookComponent implements OnInit {
 
-  book_content: string;
+  bookMessage: [string, string];
 
   constructor(private dataHandlerService: DataHandlerService,
               private spinner: NgxSpinnerService,
@@ -21,8 +21,8 @@ export class BookComponent implements OnInit {
   ngOnInit() {
     this.spinner.show();
     this.dataHandlerService.currentBookMessage
-    .subscribe(bookMessage => {
-      this.book_content = bookMessage;
+    .subscribe(message => {
+      this.bookMessage = message;
       this.spinner.hide();
     }); 
 

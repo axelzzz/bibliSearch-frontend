@@ -12,8 +12,12 @@ img {
     height: 5em;
 }
 
-p {
+div {
     padding-top: 5em;
     white-space: pre-wrap;
     text-align: center;
+}
+
+.test {
+    font-style: italic;
 }

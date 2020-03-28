@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
 
   books = [];
   booksSuggestion = [];
+  pattern = "";
 
   showSuggestion = false;
   hasSearched = false;
@@ -48,6 +49,7 @@ export class MainComponent implements OnInit {
 
   filter(pattern: string) {
     
+    this.pattern = pattern;
     this.hasSearched = true;
     this.spinner.show();
     if(! (this.isSearchByTitle 
@@ -93,7 +95,7 @@ export class MainComponent implements OnInit {
     this.searchEngineService.fetchBook(book.nameFile)
     .subscribe(content => {            
       book.content = content;
-      this.dataHandlerService.changeBook(book.content);      
+      this.dataHandlerService.changeBook([book.content, this.pattern]);      
     },
     error => {
       console.error("Book not found, trying with other name file ");
@@ -115,7 +117,7 @@ export class MainComponent implements OnInit {
     this.searchEngineService.fetchBook(book.nameFile)
     .subscribe(content => {      
       book.content = content;
-      this.dataHandlerService.changeBook(book.content);      
+      this.dataHandlerService.changeBook([book.content, this.pattern]);      
     },
     error => {
       console.error("Book modified not found ", error);
