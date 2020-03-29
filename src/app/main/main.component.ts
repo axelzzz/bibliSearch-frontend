@@ -50,6 +50,8 @@ export class MainComponent implements OnInit {
   filter(pattern: string) {
     
     this.pattern = pattern;
+    this.showSuggestion = false;
+    this.booksSuggestion = [];
     this.hasSearched = true;
     this.spinner.show();
     if(! (this.isSearchByTitle 

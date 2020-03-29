@@ -50,7 +50,7 @@
   <ul [style.width]="getWidth()"
       [style.float]="getFloat()"
   >
-    <span *ngIf="showSuggestion">Suggestions :</span>
+    <span *ngIf="booksSuggestion.length > 0">Suggestions :</span>
 
     <li *ngFor="let book of booksSuggestion">
 
