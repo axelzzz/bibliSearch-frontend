@@ -19,8 +19,8 @@ export class SearchEngineService {
   }
 
 
-  filter(pattern: string) {    
-    return this.filterCriterias(pattern, false, false, false, false, false);
+  filter(pattern: string, betweenness: boolean, pagerank: boolean, mix: boolean) {    
+    return this.filterCriterias(pattern, false, false, false, false, false, betweenness, pagerank, mix);
   }
 
   filterCriterias(pattern: string, 
@@ -28,13 +28,19 @@ export class SearchEngineService {
                   isSearchByAuthor: boolean,
                   isSearchByReleaseDate: boolean,
                   isSearchByPostingDate: boolean,
-                  isSearchByLanguage: boolean) {
+                  isSearchByLanguage: boolean,
+                  betweenness: boolean,
+                  pagerank: boolean,
+                  mix: boolean) {
 
     return this.http.get<any>(configUrls.filterUrlLocal+pattern+"&isSearchByTitle="+isSearchByTitle
                                                                +"&isSearchByAuthor="+isSearchByAuthor
                                                                +"&isSearchByReleaseDate="+isSearchByReleaseDate
                                                                +"&isSearchByPostingDate="+isSearchByPostingDate
-                                                               +"&isSearchByLanguage="+isSearchByLanguage);   
+                                                               +"&isSearchByLanguage="+isSearchByLanguage
+                                                               +"&betweenness="+betweenness
+                                                               +"&pagerank="+pagerank
+                                                               +"&mix="+mix);   
   }
 
   fetchBook(nameFile:string) : Observable<string> {

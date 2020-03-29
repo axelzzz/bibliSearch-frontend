@@ -26,6 +26,10 @@ export class MainComponent implements OnInit {
   isSearchByLanguage = false;
   isSearchInCurrentBooks = false;
 
+  isBetweenness = false;
+  isPageRank = false;
+  isMix = false;
+
   constructor(private searchEngineService: SearchEngineService,
               private dataHandlerService: DataHandlerService,
               private spinner: NgxSpinnerService) { }
@@ -60,7 +64,7 @@ export class MainComponent implements OnInit {
        || this.isSearchByPostingDate
        || this.isSearchByLanguage) ) {
 
-        this.searchEngineService.filter(pattern)
+        this.searchEngineService.filter(pattern, this.isBetweenness, this.isPageRank, this.isMix)
           .subscribe(books => {
             this.books = books;
             this.spinner.hide();
@@ -79,7 +83,10 @@ export class MainComponent implements OnInit {
                     this.isSearchByAuthor,
                     this.isSearchByReleaseDate,
                     this.isSearchByPostingDate,
-                    this.isSearchByLanguage)
+                    this.isSearchByLanguage,
+                    this.isBetweenness,
+                    this.isPageRank,
+                    this.isMix)
                     .subscribe(books => {
                       this.books = books;
                       this.spinner.hide();
@@ -132,16 +139,13 @@ export class MainComponent implements OnInit {
   }
 
   getWidth() {
-    if(this.booksSuggestion.length > 0){
-      //this.showSuggestion = false;
-      //this.hasSearched = false;  
+    if(this.booksSuggestion.length > 0){ 
       return '50%';
     }
   }
 
   getFloat() {    
-    if(this.booksSuggestion.length > 0){
-      //this.showSuggestion = false;   
+    if(this.booksSuggestion.length > 0){   
       return 'left';
     }
   }
